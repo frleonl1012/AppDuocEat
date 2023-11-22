@@ -1,0 +1,7 @@
+{
+  "name": "AppDuocEat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
