@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home DuocEat
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1>Lista de productos</h1>
+  <ion-list>
+    <ion-item *ngFor="let producto of arrayColeccionProductos">
+        <ion-grid>
+          <h2>{{ producto.data.nombre }}</h2>
+        </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

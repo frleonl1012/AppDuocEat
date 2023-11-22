@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Agregar producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Nuevo producto</ion-card-title>
+      <ion-card-subtitle>Ingresar datos del producto</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-select label="Local" [(ngModel)]="local">
+          <ion-select-option value="castanio">Castaño</ion-select-option>
+          <ion-select-option value="paradiso">Paradiso</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Nombre" [(ngModel)]="producto.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Precio" [(ngModel)]="producto.precio"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button (click)="botonInsertar()" color="tertiary"><ion-icon name="add-circle-outline"></ion-icon> Agregar producto</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
