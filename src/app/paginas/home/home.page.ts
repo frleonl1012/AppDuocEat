@@ -15,13 +15,22 @@ export class HomePage {
     data: {} as Producto
   }]
 
+  segment: string;
+
   constructor(private firestoreService : FirestoreService) {
+    this.segment = "castanio";
     this.obtenerListaProductos();
   }
 
 
+  cambiarSegmento() {
+    this.obtenerListaProductos(); 
+  }
+
+
   obtenerListaProductos(){
-    this.firestoreService.consultar("castanio").subscribe(
+  
+    this.firestoreService.consultar(this.segment).subscribe(
       (resultadoConsulta) => {
 
         this.arrayColeccionProductos = [];

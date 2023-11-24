@@ -8,6 +8,8 @@ import { Producto } from '../producto';
 })
 export class FirestoreService {
 
+  collections: { name: string, count: number }[] = [];
+
   constructor(private angularFirestore: AngularFirestore) { }
 
   public insertar(coleccion: string, datos: Producto){
@@ -17,5 +19,18 @@ export class FirestoreService {
   public consultar(coleccion: string){
     return this.angularFirestore.collection(coleccion).snapshotChanges();
   }
+
+
+  getNumberOfDocuments(collectionName: string): Promise<number> {
+    return new Promise((resolve, reject) => {
+      this.angularFirestore.collection(collectionName).get().subscribe(snapshot => {
+        const count = snapshot.size; // Obtiene el número de documentos en la colección
+        resolve(count);
+      }, error => {
+        reject(error);
+      });
+    });
+  }
+
 
 }

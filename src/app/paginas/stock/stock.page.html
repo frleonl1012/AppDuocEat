@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Stock</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-text color="tertiary">
+    <h2 class="ion-text-center">Stock de productos</h2>
+  </ion-text>
+
+  <div >
+    <ion-list>
+      <ion-item *ngFor="let coleccion of colecciones">
+        <ion-label>{{ nombresColecciones[coleccion.nombre]  }}</ion-label>
+        <ion-badge >{{ coleccion.cantidadRegistros }}</ion-badge>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <p class="ion-text-center">
+    <ion-button [routerLink]="['/agregar']" color="success"><ion-icon name="add-circle-outline"></ion-icon> Agregar productos</ion-button>
+  </p>
+  
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+          <ion-icon name="person-outline"></ion-icon>
+          Perfil
+        </ion-tab-button>
+        <ion-tab-button tab="radio"  [routerLink]="['/home']">
+          <ion-icon name="home-outline"></ion-icon>
+          Home
+        </ion-tab-button>
+        <ion-tab-button tab="library">
+          <ion-icon name="cart-outline"></ion-icon>
+          Carrito
+        </ion-tab-button>
+        <ion-tab-button tab="search" [routerLink]="['/stock']">
+          <ion-icon name="file-tray-outline"></ion-icon>
+          Stock
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

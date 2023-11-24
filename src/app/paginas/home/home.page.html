@@ -1,18 +1,83 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Home DuocEat
+      Home 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Lista de productos</h1>
-  <ion-list>
+  
+  <ion-text color="tertiary">
+    <h2 class="ion-text-center">Lista de productos</h2>
+  </ion-text>
+
+  <ion-segment  color="light" [(ngModel)]="segment" (ionChange)="cambiarSegmento()">
+    <ion-segment-button value="castanio">
+      <ion-img
+        src="https://www.pcdata-logistics.com/wp-content/uploads/2019/08/logo-castino.png"
+        alt="Castaño"
+      ></ion-img>
+    </ion-segment-button>
+    <ion-segment-button value="paradiso">
+      <ion-img
+        src="https://media.licdn.com/dms/image/C4D0BAQExaLqVO6OlFA/company-logo_200_200/0/1630561281930?e=2147483647&v=beta&t=2Yif0I_DRUNaJaFH0N17RsRowB9cTmqssD1FveGe5dY"
+        alt="Paradiso"
+      ></ion-img>
+    </ion-segment-button>
+    <ion-segment-button value="achoclonados">
+      <ion-img
+        src="https://tofuu.getjusto.com/orioneat-prod-resized/vp2Z7Zrmsm7xnqHAR-200-undefined.webp"
+        alt="Achoclonado"
+      ></ion-img>
+    </ion-segment-button>
+  </ion-segment>
+
+  
+ 
     <ion-item *ngFor="let producto of arrayColeccionProductos">
         <ion-grid>
-          <h2>{{ producto.data.nombre }}</h2>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="7">
+              <p><ion-text color="warning"><ion-icon name="restaurant-outline"></ion-icon></ion-text> {{ producto.data.nombre }}</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-end"><p><ion-text color="success">$ {{ producto.data.precio }}</ion-text></p></ion-col>
+            <ion-col size="2" class="ion-text-end"><ion-icon name="add-circle-outline" size="large" color="tertiary"></ion-icon></ion-col>
+          </ion-row>
         </ion-grid>
     </ion-item>
-  </ion-list>
+  
+
+    
 </ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+          <ion-icon name="person-outline"></ion-icon>
+          Perfil
+        </ion-tab-button>
+        <ion-tab-button tab="radio"  [routerLink]="['/home']">
+          <ion-icon name="home-outline"></ion-icon>
+          Home
+        </ion-tab-button>
+        <ion-tab-button tab="library">
+          <ion-icon name="cart-outline"></ion-icon>
+          Carrito
+        </ion-tab-button>
+        <ion-tab-button tab="search" [routerLink]="['/stock']">
+          <ion-icon name="file-tray-outline"></ion-icon>
+          Stock
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
