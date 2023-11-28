@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/basededatos/firestore.service';
+import { Producto } from 'src/app/producto';
 
 @Component({
   selector: 'app-stock',
@@ -16,15 +17,39 @@ export class StockPage implements OnInit {
     achoclonados: "Achoclonados"
   };
 
-  constructor(private firestoreService : FirestoreService) { }
+  arrayColeccionProductos: any = [{
+    id:"",
+    data: {} as Producto
+  }]
+
+  segment: string;
+
+  productoSeleccionado: any;
+
+
+
+
+  constructor(private firestoreService : FirestoreService) { 
+    this.segment = "castanio";
+    this.obtenerListaProductos();
+  }
 
   async ngOnInit() {
     await this.obtenerColecciones();
   }
 
+  eliminar(id: string){
+    this.firestoreService.delete(this.segment, id);
+    this.obtenerColecciones();
+  }
+
+  mostrarFormulario(producto: any) {
+    this.productoSeleccionado = producto;
+  }
+
   async obtenerColecciones() {
     const nombresColecciones = ['castanio', 'paradiso', 'achoclonados']; 
-
+    this.colecciones = [];
     for (const nombre of nombresColecciones) {
       try {
         const cantidadRegistros = await this.firestoreService.getNumberOfDocuments(nombre);
@@ -34,5 +59,31 @@ export class StockPage implements OnInit {
       }
     }
   }
+
+  cambiarSegmento() {
+    this.obtenerListaProductos(); 
+  }
+
+
+  obtenerListaProductos(){
+  
+    this.firestoreService.consultar(this.segment).subscribe(
+      (resultadoConsulta) => {
+
+        this.arrayColeccionProductos = [];
+        resultadoConsulta.forEach(
+          (datosProducto : any) => {
+            this.arrayColeccionProductos.push({
+              id: datosProducto.payload.doc.id,
+              data: datosProducto.payload.doc.data()
+            });
+          }
+        );
+      
+      }
+    );
+  }
+
+  
 
 }

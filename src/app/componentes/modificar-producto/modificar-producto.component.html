@@ -1,0 +1,43 @@
+
+
+
+
+  <ion-button id="open-modal-{{ id }}" fill="clear"><ion-icon name="create-outline" color="tertiary"></ion-icon></ion-button>
+ 
+  <ion-modal trigger="open-modal-{{ id }}" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+         
+          
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Modificar producto</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <ion-item>
+                <ion-label position="stacked" color="tertiary">Nombre</ion-label>
+                <ion-input formControlName="nombre" aria-label="Nombre" required></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label position="stacked" color="tertiary">Precio</ion-label>
+                <ion-input formControlName="precio" aria-label="Precio" required></ion-input>
+              </ion-item>
+              <br>
+              <ion-button type="submit">Guardar</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+

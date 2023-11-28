@@ -15,9 +15,17 @@ export class FirestoreService {
   public insertar(coleccion: string, datos: Producto){
     return this.angularFirestore.collection(coleccion).add(datos);
   }
-
+ 
   public consultar(coleccion: string){
     return this.angularFirestore.collection(coleccion).snapshotChanges();
+  }
+
+  public delete(coleccion: string, id: string){
+    return this.angularFirestore.collection(coleccion).doc(id).delete();
+  }
+
+  public updateProducto(id: string, data: Producto, coleccion: string) {
+    return this.angularFirestore.collection(coleccion).doc(id).update(data);
   }
 
 

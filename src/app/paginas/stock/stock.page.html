@@ -8,20 +8,31 @@
   <ion-text color="tertiary">
     <h2 class="ion-text-center">Stock de productos</h2>
   </ion-text>
-
-  <div >
-    <ion-list>
-      <ion-item *ngFor="let coleccion of colecciones">
-        <ion-label>{{ nombresColecciones[coleccion.nombre]  }}</ion-label>
-        <ion-badge >{{ coleccion.cantidadRegistros }}</ion-badge>
-      </ion-item>
-    </ion-list>
-  </div>
-
-
-  <p class="ion-text-center">
-    <ion-button [routerLink]="['/agregar']" color="success"><ion-icon name="add-circle-outline"></ion-icon> Agregar productos</ion-button>
+  <p >
+    <ion-button [routerLink]="['/agregar']" size="small" color="success"><ion-icon name="add-circle-outline"></ion-icon> Agregar Producto</ion-button>
   </p>
+
+  <ion-segment  color="light" [(ngModel)]="segment" (ionChange)="cambiarSegmento()" >
+    <ion-segment-button *ngFor="let coleccion of colecciones" value="{{coleccion.nombre}}">
+      <ion-label>{{ nombresColecciones[coleccion.nombre]  }}</ion-label>
+      <ion-badge color="tertiary">{{ coleccion.cantidadRegistros }}</ion-badge>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <ion-item *ngFor="let producto of arrayColeccionProductos" >
+    
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="8">
+          <p>{{ producto.data.nombre }} - ${{ producto.data.precio }}</p> 
+        </ion-col>
+        <ion-col size="2" class="ion-text-end"> <app-modificar-producto [producto]="producto" [id]="producto.id" [local]="segment"></app-modificar-producto></ion-col>
+        <ion-col size="2" class="ion-text-end"><ion-icon name="trash-outline" color="danger" (click)="eliminar(producto.id)"></ion-icon></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  
   
 </ion-content>
 
