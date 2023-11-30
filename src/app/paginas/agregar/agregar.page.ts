@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../producto';
-import { FirestoreService } from 'src/app/basededatos/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-title>
       Home 
     </ion-title>
@@ -9,7 +9,8 @@
 <ion-content [fullscreen]="true">
   
   <ion-text color="tertiary">
-    <h2 class="ion-text-center">Lista de productos</h2>
+    <h2 class="ion-text-center">Bienvenido, Juan</h2>
+    <h5 class="ion-text-center">Escoge algo para comer el día de hoy</h5>
   </ion-text>
 
   <ion-segment  color="light" [(ngModel)]="segment" (ionChange)="cambiarSegmento()">
@@ -38,11 +39,16 @@
     <ion-item *ngFor="let producto of arrayColeccionProductos">
         <ion-grid>
           <ion-row class="ion-align-items-center">
-            <ion-col size="7">
-              <p><ion-text color="warning"><ion-icon name="restaurant-outline"></ion-icon></ion-text> {{ producto.data.nombre }}</p>
+            <ion-col size="8">
+              <p>{{ producto.data.nombre ! }} - <ion-text color="success">$ {{ producto.data.precio }}</ion-text></p>
+              
             </ion-col>
-            <ion-col size="3" class="ion-text-end"><p><ion-text color="success">$ {{ producto.data.precio }}</ion-text></p></ion-col>
-            <ion-col size="2" class="ion-text-end"><ion-icon name="add-circle-outline" size="large" color="tertiary"></ion-icon></ion-col>
+            <ion-col size="2" class="ion-text-end">
+              <ion-icon [routerLink]="['/home/detalle/',producto.id,segment]" name="eye-outline" size="large" color="warning"></ion-icon>
+            </ion-col>
+            <ion-col size="2" class="ion-text-end">
+              <ion-icon (click)="addToCarrito(producto.data.nombre , producto.data.precio)" name="add-circle-outline" size="large" color="tertiary"></ion-icon>
+            </ion-col>
           </ion-row>
         </ion-grid>
     </ion-item>
@@ -57,19 +63,19 @@
   <ion-toolbar>
     <ion-tabs>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home">
+        <ion-tab-button >
           <ion-icon name="person-outline"></ion-icon>
           Perfil
         </ion-tab-button>
-        <ion-tab-button tab="radio"  [routerLink]="['/home']">
+        <ion-tab-button  [routerLink]="['/home']">
           <ion-icon name="home-outline"></ion-icon>
           Home
         </ion-tab-button>
-        <ion-tab-button tab="library">
+        <ion-tab-button [routerLink]="['/carrito']">
           <ion-icon name="cart-outline"></ion-icon>
           Carrito
         </ion-tab-button>
-        <ion-tab-button tab="search" [routerLink]="['/stock']">
+        <ion-tab-button  [routerLink]="['/stock']">
           <ion-icon name="file-tray-outline"></ion-icon>
           Stock
         </ion-tab-button>

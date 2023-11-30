@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Producto } from '../producto';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +26,10 @@ export class FirestoreService {
 
   public updateProducto(id: string, data: Producto, coleccion: string) {
     return this.angularFirestore.collection(coleccion).doc(id).update(data);
+  }
+
+  public getProductById(productId: string, coleccion: string): Observable<any> {
+    return this.angularFirestore.collection(coleccion).doc(productId).valueChanges();
   }
 
 

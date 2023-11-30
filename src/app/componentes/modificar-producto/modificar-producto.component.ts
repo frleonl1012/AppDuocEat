@@ -1,7 +1,7 @@
 import { Component, OnInit,  Input, ViewChild } from '@angular/core';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FirestoreService } from 'src/app/basededatos/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 import { ToastController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';

@@ -10,9 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+import { MenuFooterComponent } from './componentes/menu-footer/menu-footer.component';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MenuFooterComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule],

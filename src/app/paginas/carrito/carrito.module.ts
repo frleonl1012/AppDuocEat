@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AgregarPageRoutingModule } from './agregar-routing.module';
+import { CarritoPageRoutingModule } from './carrito-routing.module';
 
-import { AgregarPage } from './agregar.page';
-
-
+import { CarritoPage } from './carrito.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgregarPageRoutingModule
+    CarritoPageRoutingModule
   ],
-  declarations: [AgregarPage]
+  declarations: [CarritoPage]
 })
-export class AgregarPageModule {}
+export class CarritoPageModule {}

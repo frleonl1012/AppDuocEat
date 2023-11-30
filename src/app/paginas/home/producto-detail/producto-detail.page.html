@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle del producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card *ngIf="product">
+    <img alt="Silhouette of mountains" src="{{ imagenesColecciones[coleccion] }}" />
+    <ion-card-header>
+      <ion-card-title>{{ product.nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ nombresColecciones[coleccion] }}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p><ion-text color="success">${{ product.precio }}</ion-text></p>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
+ 
+  
+</ion-content>
+

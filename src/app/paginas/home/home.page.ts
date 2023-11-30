@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FirestoreService } from 'src/app/basededatos/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 import { Producto } from 'src/app/producto';
+import { CarritoService } from 'src/app/services/carrito.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,11 @@ export class HomePage {
 
   segment: string;
 
-  constructor(private firestoreService : FirestoreService) {
+  constructor(
+    private firestoreService : FirestoreService, 
+    private carritoService : CarritoService,
+    private toastController: ToastController
+  ) {
     this.segment = "castanio";
     this.obtenerListaProductos();
   }
@@ -47,5 +53,23 @@ export class HomePage {
     );
   }
 
+  async addToCarrito(nombre: any, precio: any) {
+    try {
+      await this.carritoService.addToCarrito(nombre, precio);
+      this.presentToast('Agregado al carrito correctamente', 'success');
+    } catch (error) {
+      this.presentToast('Error al agregar al carrito', 'danger');
+    }
+  }
+
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000, // Duración del mensaje en milisegundos
+      position: 'bottom', // Posición del mensaje en la pantalla
+      color: color 
+    });
+    toast.present();
+  }
 
 }

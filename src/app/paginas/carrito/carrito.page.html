@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <ion-item-divider>
+    <ion-label><ion-text >Lista de productos</ion-text></ion-label>
+  </ion-item-divider>
+  <ion-list *ngIf="carrito.length > 0">
+    <ion-item *ngFor="let item of carrito">
+      <ion-label>{{ item.nombre }}</ion-label>
+      <ion-label>${{ item.precio }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-item *ngIf="carrito.length === 0">
+    <ion-label>Carrito vacío</ion-label>
+  </ion-item>
+  <ion-item-divider color="light">
+    <ion-label><ion-icon name="cart-outline"></ion-icon> TOTAL: </ion-label>
+    <ion-label>${{ total }}</ion-label>
+  </ion-item-divider>
+
+  <br>
+  <ion-button (click)="borrarCarrito()">
+    Comprar productos
+  </ion-button>
+</ion-content>
+
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button >
+          <ion-icon name="person-outline"></ion-icon>
+          Perfil
+        </ion-tab-button>
+        <ion-tab-button  [routerLink]="['/home']">
+          <ion-icon name="home-outline"></ion-icon>
+          Home
+        </ion-tab-button>
+        <ion-tab-button [routerLink]="['/carrito']">
+          <ion-icon name="cart-outline"></ion-icon>
+          Carrito
+        </ion-tab-button>
+        <ion-tab-button  [routerLink]="['/stock']">
+          <ion-icon name="file-tray-outline"></ion-icon>
+          Stock
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

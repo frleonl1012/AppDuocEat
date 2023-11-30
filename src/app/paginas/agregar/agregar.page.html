@@ -1,10 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button [routerLink]="['/stock']"></ion-back-button>
+    </ion-buttons>
     <ion-title>Agregar producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
+
   <ion-card>
     <ion-card-header>
       <ion-card-title>Nuevo producto</ion-card-title>
@@ -31,28 +36,3 @@
   </ion-card>
 </ion-content>
 
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home">
-          <ion-icon name="person-outline"></ion-icon>
-          Perfil
-        </ion-tab-button>
-        <ion-tab-button tab="radio"  [routerLink]="['/home']">
-          <ion-icon name="home-outline"></ion-icon>
-          Home
-        </ion-tab-button>
-        <ion-tab-button tab="library">
-          <ion-icon name="cart-outline"></ion-icon>
-          Carrito
-        </ion-tab-button>
-        <ion-tab-button tab="search" [routerLink]="['/stock']">
-          <ion-icon name="file-tray-outline"></ion-icon>
-          Stock
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-toolbar>
-</ion-footer>
