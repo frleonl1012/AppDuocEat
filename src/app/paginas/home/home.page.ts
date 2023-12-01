@@ -53,9 +53,9 @@ export class HomePage {
     );
   }
 
-  async addToCarrito(nombre: any, precio: any) {
+  addToCarrito(nombre: any, precio: any) {
     try {
-      await this.carritoService.addToCarrito(nombre, precio);
+      this.carritoService.addToCarrito(nombre, precio);
       this.presentToast('Agregado al carrito correctamente', 'success');
     } catch (error) {
       this.presentToast('Error al agregar al carrito', 'danger');
