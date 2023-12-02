@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,10 @@ export class LoginPage implements OnInit {
     password: ''
   }
 
-  constructor(private auth : AuthService, private toastController: ToastController) { }
+  constructor(
+    private auth : AuthService, 
+    private toastController: ToastController, 
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +31,7 @@ export class LoginPage implements OnInit {
     });
     if(res){
       console.log(res);
+      this.router.navigate(['/home']);
     }
   }
 

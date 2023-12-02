@@ -3,6 +3,7 @@ import { CarritoService } from 'src/app/services/carrito.service';
 import { Element } from './carrito';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-carrito',
@@ -17,7 +18,8 @@ export class CarritoPage implements OnInit {
   constructor(
     private carritoService:CarritoService, 
     private router:Router, 
-    private toastController: ToastController
+    private toastController: ToastController,
+    private authService : AuthService
   ) { 
     this.getCarrito();
     this.getTotal();
@@ -53,5 +55,14 @@ export class CarritoPage implements OnInit {
     });
     toast.present();
   }
+
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+
+
+
 
 }

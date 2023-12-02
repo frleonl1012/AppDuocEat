@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { MenuFooterComponent } from './componentes/menu-footer/menu-footer.component';
 
 
+
+
 @NgModule({
   declarations: [AppComponent, MenuFooterComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 

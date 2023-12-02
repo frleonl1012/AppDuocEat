@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Producto } from 'src/app/producto';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stock',
@@ -29,7 +31,10 @@ export class StockPage implements OnInit {
 
 
 
-  constructor(private firestoreService : FirestoreService) { 
+  constructor(
+    private firestoreService : FirestoreService,
+    private authService: AuthService,
+    private router: Router) { 
     this.segment = "castanio";
     this.obtenerListaProductos();
   }
@@ -84,6 +89,9 @@ export class StockPage implements OnInit {
     );
   }
 
-  
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 
 }

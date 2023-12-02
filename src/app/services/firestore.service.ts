@@ -33,6 +33,10 @@ export class FirestoreService {
   }
 
 
+  public getPerfilById(productId: string, coleccion: string): Observable<any> {
+    return this.angularFirestore.collection(coleccion).doc(productId).valueChanges();
+  }
+
   getNumberOfDocuments(collectionName: string): Promise<number> {
     return new Promise((resolve, reject) => {
       this.angularFirestore.collection(collectionName).get().subscribe(snapshot => {

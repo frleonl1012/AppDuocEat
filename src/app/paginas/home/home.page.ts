@@ -3,6 +3,9 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { Producto } from 'src/app/producto';
 import { CarritoService } from 'src/app/services/carrito.service';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/usuario';
 
 @Component({
   selector: 'app-home',
@@ -19,13 +22,24 @@ export class HomePage {
 
   segment: string;
 
+  usuario: Usuario = {
+    nombre: '',
+    carrera: '',
+    telefono: '',
+    rol: ''
+  };
+
   constructor(
     private firestoreService : FirestoreService, 
     private carritoService : CarritoService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.segment = "castanio";
     this.obtenerListaProductos();
+    this.loginUsuario()
+    
   }
 
 
@@ -70,6 +84,42 @@ export class HomePage {
       color: color 
     });
     toast.present();
+  }
+
+  loginUsuario(){
+    this.authService.getEstadoLogin().subscribe(
+      res => {
+        if(res){
+          this.getPerfil(res.uid);
+        }else{
+          console.log('estado: no logueado');
+          
+        }
+      }
+    );
+  }
+
+  getPerfil(uid:string){
+    const path = 'usuarios';
+    const id = uid;
+    this.firestoreService.getPerfilById(id,path).subscribe(
+      (data) => {
+        if(data){
+          this.usuario = data;  
+        }else{
+          console.log("No se encontraron datos para el perfil");
+        }
+      },
+      (error) => {
+        console.log("Error al obtener el perfil:", error)
+      }
+    );
+
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

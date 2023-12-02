@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="tertiary">
     <ion-title>Carrito</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="log-out-outline" size="large" (click)="logout()"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +38,7 @@
   <ion-toolbar>
     <ion-tabs>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button >
+        <ion-tab-button [routerLink]="['/perfil']">
           <ion-icon name="person-outline"></ion-icon>
           Perfil
         </ion-tab-button>

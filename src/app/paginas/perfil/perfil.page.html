@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="log-out-outline" size="large" (click)="logout()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+
+  
+  <ion-card>
+    <ion-card-header>
+
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="auto" >
+            <ion-avatar class="ion-text-center">
+              <img alt="Usuario" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text color="tertiary" class="ion-text-center">
+              <h5>{{usuario.nombre}}</h5>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+     
+        
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p><ion-label color="primary">Carrera:</ion-label><ion-label>{{usuario.carrera}}</ion-label></p>
+      <p><ion-label color="primary">Teléfono:</ion-label><ion-label>{{usuario.telefono}}</ion-label></p>
+      <p><ion-label color="primary">Rol:</ion-label><ion-label>{{usuario.rol}}</ion-label></p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button [routerLink]="['/perfil']">
+          <ion-icon name="person-outline"></ion-icon>
+          Perfil
+        </ion-tab-button>
+        <ion-tab-button  [routerLink]="['/home']">
+          <ion-icon name="home-outline"></ion-icon>
+          Home
+        </ion-tab-button>
+        <ion-tab-button [routerLink]="['/carrito']">
+          <ion-icon name="cart-outline"></ion-icon>
+          Carrito
+        </ion-tab-button>
+        <ion-tab-button  [routerLink]="['/stock']">
+          <ion-icon name="file-tray-outline"></ion-icon>
+          Stock
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

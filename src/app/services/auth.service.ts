@@ -12,4 +12,12 @@ export class AuthService {
     return this.authfirebase.signInWithEmailAndPassword(correo,password);
   }
 
+  getEstadoLogin(){
+    return this.authfirebase.authState;
+  }
+
+  logout(){
+    this.authfirebase.signOut();
+  }
+
 }

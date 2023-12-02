@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@angular/fire/auth-guard';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
         loadChildren: () => import('./paginas/home/producto-detail/producto-detail.module').then( m => m.ProductoDetailPageModule)
       },
     ],
+    //canActivate: [AuthGuard]
    
   },
   {
@@ -32,11 +34,17 @@ const routes: Routes = [
   {
     path: 'stock',
     loadChildren: () => import('./paginas/stock/stock.module').then( m => m.StockPageModule)
+    
   },
   {
     path: 'carrito',
     loadChildren: () => import('./paginas/carrito/carrito.module').then( m => m.CarritoPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./paginas/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+
   
 ];
 
