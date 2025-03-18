@@ -1,0 +1,50 @@
+ion-header {
+    --background: var(--ion-color-primary);
+    ion-toolbar {
+      --background: var(--ion-color-tertiary);
+      ion-title {
+        color: white;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+  
+  .login-container {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos estén en columna */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 20px; /* Espaciado entre el logo y el formulario */
+  }
+
+  ion-img {
+    width: 200px; /* Ajusta el tamaño del logo */
+    height: auto;
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  ion-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ion-background-color);
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  ion-button {
+    width: 100%;
+    font-size: 1rem;
+  }
