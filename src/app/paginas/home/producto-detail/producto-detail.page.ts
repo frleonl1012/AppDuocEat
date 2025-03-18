@@ -20,7 +20,7 @@ export class ProductoDetailPage implements OnInit {
   };
 
   imagenesColecciones: { [key: string]: string } = {
-    castanio: "https://mall.costaneracenter.cl/sites/default/files/styles/rm_tiendas_fotos_y_mapas/public/fotos-tienda/CASTAN%CC%83O.jpg.webp?itok=VnfN8K1y",
+    castanio: "https://cencomalls.cl/sites/default/files/styles/rm_tiendas_fotos_y_mapas/public/fotos-tienda/CASTAN%25CC%2583O.jpg.webp?itok=VkXLWuIj",
     paradiso: "https://media-cdn.tripadvisor.com/media/photo-s/16/c1/72/4b/nuestras-vitrinas.jpg",
     achoclonados: "https://tofuu.getjusto.com/orioneat-prod-resized/T88NhRAKGTYW58WFT-300-500.webp"
   };
